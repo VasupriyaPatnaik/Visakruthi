@@ -1,24 +1,43 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useLanguage } from "./LanguageContext";
+
+const ROLE_BADGE = { admin: "⚙️ Admin", volunteer: "🤝 Volunteer", artisan: "🎨 Artisan" };
+
+const getStoredUser = () => {
+  try {
+    const raw = window.localStorage.getItem("visakruthiUser") || window.localStorage.getItem("visakruthiAdmin");
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+};
 
 const linkClass = ({ isActive }) =>
   `rounded-full px-4 py-2 transition ${
-    isActive ? "bg-[#f3d2bb] text-[#7b3f24]" : "text-white hover:bg-white/14 hover:text-white"
+    isActive ? "bg-[#E8540D] text-white" : "text-white hover:bg-white/16 hover:text-white"
   }`;
 
 export default function Navbar() {
   const { language, toggleLanguage, text } = useLanguage();
+  const navigate = useNavigate();
+  const user = getStoredUser();
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("visakruthiUser");
+    window.localStorage.removeItem("visakruthiAdmin");
+    navigate("/");
+  };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#8c4f30] bg-[#8a4f32] shadow-md shadow-[#8a4f32]/20">
+    <header className="sticky top-0 z-40 border-b border-indigo/20 bg-linear-to-r from-indigo to-[#0D4975] shadow-md shadow-indigo/20">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 lg:px-8">
         <Link to="/" className="flex items-center gap-3 rounded-full pr-3">
-          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f8efe5] text-lg font-extrabold text-[#7b3f24] shadow-md shadow-black/10">
+          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-terracotta text-lg font-extrabold text-white shadow-md shadow-black/10">
             V
           </div>
           <div>
             <p className="font-display text-[1.55rem] font-bold leading-none text-white">VISAKRUTHI</p>
-            <p className="pt-1 text-[11px] uppercase tracking-[0.3em] text-[#f4cfaa]">{text("Crafts of Vizag", "వైజాగ్ కళలు")}</p>
+            <p className="pt-1 text-[11px] uppercase tracking-[0.3em] text-gold">{text("Crafts of Vizag", "వైజాగ్ కళలు")}</p>
           </div>
         </Link>
 
@@ -38,18 +57,33 @@ export default function Navbar() {
           <NavLink to="/volunteer" className={linkClass}>
             {text("Volunteer", "వాలంటీర్")}
           </NavLink>
-          <NavLink to="/login" className={linkClass}>
-            {text("Login", "లాగిన్")}
-          </NavLink>
-          <NavLink to="/dashboard" className={linkClass}>
-            {text("Dashboard", "డాష్‌బోర్డ్")}
-          </NavLink>
+          {user ? (
+            <>
+              <NavLink to="/dashboard" className={linkClass}>
+                {text("Dashboard", "డాష్‌బోర్డ్")}
+              </NavLink>
+              <span className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white/90">
+                {ROLE_BADGE[user.role] ?? "👤"}
+              </span>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-full px-4 py-2 text-white/80 transition hover:bg-white/16 hover:text-white"
+              >
+                {text("Logout", "లాగ్అవుట్")}
+              </button>
+            </>
+          ) : (
+            <NavLink to="/login" className={linkClass}>
+              {text("Login", "లాగిన్")}
+            </NavLink>
+          )}
         </nav>
 
         <button
           type="button"
           onClick={toggleLanguage}
-          className="order-2 rounded-full border border-white/18 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:border-[#f4cfaa] hover:bg-white/16 hover:text-[#f4cfaa] md:order-3"
+          className="order-2 rounded-full border border-white/18 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:border-gold hover:bg-white/16 hover:text-gold md:order-3"
         >
           {language === "en" ? "English / తెలుగు" : "తెలుగు / English"}
         </button>
