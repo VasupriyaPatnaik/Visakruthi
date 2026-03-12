@@ -42,7 +42,7 @@ export default function KalaSaathi() {
               x
             </button>
           </div>
-          <div className="max-h-72 space-y-3 overflow-y-auto rounded-2xl bg-[#fffaf5] p-3 shadow-inner">
+          <div className="max-h-72 space-y-3 overflow-y-auto rounded-2xl bg-[#FEFAF5] p-3 shadow-inner">
             {messages.map((message, index) => (
               <div
                 key={`${message.role}-${index}`}
