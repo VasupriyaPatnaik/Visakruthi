@@ -5,6 +5,7 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "build": "echo \"No build step required for visakruthi-server\"",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
