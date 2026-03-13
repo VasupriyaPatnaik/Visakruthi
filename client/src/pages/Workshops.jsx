@@ -23,6 +23,23 @@ const initialForm = {
   notes: ""
 };
 
+const getPackageForGroupSize = (groupSize) => {
+  return (
+    workshopPackages.find((pkg) => {
+      const [min, max] = (pkg.people || "").split("-").map(Number);
+      if (Number.isNaN(min) || Number.isNaN(max)) {
+        return false;
+      }
+      return groupSize >= min && groupSize <= max;
+    }) || null
+  );
+};
+
+const getMinPeopleFromPackage = (pkg) => {
+  const [min] = (pkg.people || "").split("-").map(Number);
+  return Number.isNaN(min) ? 1 : min;
+};
+
 export default function Workshops() {
   const { language, text } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,8 +58,24 @@ export default function Workshops() {
   const handlePackageSelect = (workshop) => {
     setForm((current) => ({
       ...current,
+      groupSize: getMinPeopleFromPackage(workshop),
       packageName: workshop.label,
       price: workshop.price
+    }));
+  };
+
+  const handleGroupSizeChange = (value) => {
+    const peopleCount = Number(value);
+    if (Number.isNaN(peopleCount)) {
+      return;
+    }
+
+    const matchedPackage = getPackageForGroupSize(peopleCount);
+    setForm((current) => ({
+      ...current,
+      groupSize: peopleCount,
+      packageName: matchedPackage?.label || "",
+      price: matchedPackage?.price || 0
     }));
   };
 
@@ -205,13 +238,18 @@ export default function Workshops() {
             required
             type="number"
             min="1"
+            max="10"
             value={form.groupSize}
-            onChange={(event) => setForm({ ...form, groupSize: Number(event.target.value) })}
-            placeholder={text("Group Size", "గుంపు పరిమాణం")}
+            onChange={(event) => handleGroupSizeChange(event.target.value)}
+            placeholder={text("Number of People", "వ్యక్తుల సంఖ్య")}
             className="rounded-2xl border border-indigo/10 bg-white px-4 py-4 outline-none"
           />
           <input
-            value={`${form.packageName} - Rs. ${form.price}`}
+            value={
+              form.packageName
+                ? `Rs. ${form.price}`
+                : text("No package for this group size", "ఈ గుంపు పరిమాణానికి ప్యాకేజీ లేదు")
+            }
             readOnly
             className="rounded-2xl border border-indigo/10 bg-sand px-4 py-4 outline-none"
           />
