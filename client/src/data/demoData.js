@@ -42,8 +42,8 @@ export const demoArtisans = [
     featured: true,
     gallery: [
       "https://images.pexels.com/photos/3715768/pexels-photo-3715768.jpeg?auto=compress&cs=tinysrgb&w=900",
-      "https://images.unsplash.com/photo-1516637090014-cb1ab0d08fc7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=900&q=80"
+      etikoppakaToys,
+      "https://i.ytimg.com/vi/v8aIb6fwzPw/hqdefault.jpg"
     ],
     reels: [{ title: "Toy finishing reel", url: "https://www.youtube.com/embed/v8aIb6fwzPw" }]
   },
@@ -69,8 +69,8 @@ export const demoArtisans = [
     featured: true,
     gallery: [
       "https://i.ytimg.com/vi/siGvGxy8E7g/hqdefault.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Brooms_at_market_%282%29.JPG/1280px-Brooms_at_market_%282%29.JPG",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Coconut_leaf_brooms.jpg/1280px-Coconut_leaf_brooms.jpg"
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Brooms%20on%20an%20open%20market%20in%20Macedonia.jpg",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/A%CC%B1lyiat%20(grass%20brooms)%20on%20sale%20at%20the%20Monday%20Market%20in%20Kakuri%2C%20Kaduna%2002.jpg"
     ],
     reels: [{ title: "Cheepuru tying reel", url: "https://www.youtube.com/embed/tbJaVcRD7jE" }]
   },
@@ -96,8 +96,8 @@ export const demoArtisans = [
     featured: true,
     gallery: [
       "https://images.pexels.com/photos/4654851/pexels-photo-4654851.jpeg?auto=compress&cs=tinysrgb&w=900",
-      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Craftmen%20at%20work%2C%20bamboo%20basket%20weaving%20and%20textile%20mobile%20sculptures%2C%20in%20Heuan%20Chan%20heritage%20house%2C%20Luang%20Prabang%2C%20Laos.jpg",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Jarai%20man%20preparing%20bamboo%20for%20basket%20weaving.jpg"
     ],
     reels: [{ title: "Bamboo basket rim reel", url: "https://www.youtube.com/embed/qgoszqAj1ag" }]
   },
@@ -123,8 +123,8 @@ export const demoArtisans = [
     featured: false,
     gallery: [
       "https://images.pexels.com/photos/4721355/pexels-photo-4721355.jpeg?auto=compress&cs=tinysrgb&w=900",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Tribal_Handicraft_Showroom_at_Amer_Fort.jpg/1280px-Tribal_Handicraft_Showroom_at_Amer_Fort.jpg",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Nakashikam%20(Warli%20painting).jpg"
     ],
     reels: [{ title: "Collective storytelling reel", url: "https://www.youtube.com/embed/BrdtjmRDNiE" }]
   }
@@ -135,7 +135,6 @@ export const craftCategories = [
   "Cheepuru Craft",
   "Bamboo Craft",
   "Tribal Art",
-  "Eco Souvenirs",
   "Story-led Workshops"
 ];
 
@@ -191,17 +190,6 @@ export const workshopCategoriesData = [
     availability: ["Story circle every Friday", "Student immersion days", "Collective-led custom sessions"]
   },
   {
-    id: "eco-souvenirs",
-    title: "Eco Souvenirs",
-    summary: "Sustainable visitor-friendly products inspired by local materials and small-batch artisan production.",
-    details:
-      "This category highlights how traditional methods can be adapted into refined, travel-ready keepsakes that still reflect regional identity and craft authenticity.",
-    people: ["Mixed artisan cluster", "Visitor product curators"],
-    video: "https://www.youtube.com/embed/PijlJaY213k",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Ceramic_Master_in_his_garage_working_on_handmade_maltese_souvenirs_-_traditional_maltese_balconies_%28or_gallarija%29.jpg/1280px-Ceramic_Master_in_his_garage_working_on_handmade_maltese_souvenirs_-_traditional_maltese_balconies_%28or_gallarija%29.jpg",
-    availability: ["By curated appointment", "Small group product sessions", "Retail insight add-on available"]
-  },
-  {
     id: "story-led-workshops",
     title: "Story-led Workshops",
     summary: "Culture-first sessions where craft is interpreted through memory, place, process, and community history.",
@@ -251,13 +239,6 @@ const workshopCategoryTe = {
       "ఈ విభాగం చేతిపని, అలంకార చిహ్నాలు, మరియు మౌఖిక కథనాల ద్వారా గిరిజన కళను వారసత్వంగా మాత్రమే కాక, సజీవ ప్రక్రియగా కూడా చూపిస్తుంది.",
     people: ["సిరిషా కొర్రా", "మహిళల ఆధ్వర్యంలోని కళా సమూహం"]
   },
-  "eco-souvenirs": {
-    title: "పర్యావరణ హిత జ్ఞాపికలు",
-    summary: "స్థానిక పదార్థాలు మరియు స్థిరమైన చిన్న ఉత్పత్తి పద్ధతులపై ఆధారపడిన సందర్శక అనుకూల కళా ఉత్పత్తులు.",
-    details:
-      "సాంప్రదాయ కళా విధానాలను ప్రాంతీయ గుర్తింపును కోల్పోకుండా వినియోగదారులకు నచ్చే జ్ఞాపికలుగా ఎలా రూపాంతరం చేస్తారో ఈ విభాగం చూపిస్తుంది.",
-    people: ["మిశ్రమ కళాకారుల సమూహం", "ఉత్పత్తి కురేటర్లు"]
-  },
   "story-led-workshops": {
     title: "కథా ఆధారిత వర్క్‌షాప్స్",
     summary: "స్మృతి, ప్రదేశం, ప్రక్రియ, మరియు సమాజ చరిత్రతో కళను వివరించే సంభాషణాత్మక సెషన్లు.",
@@ -277,7 +258,6 @@ const craftCategoryTe = {
   "Cheepuru Craft": "చీపురు కళ",
   "Bamboo Craft": "బాంబూ కళ",
   "Tribal Art": "గిరిజన కళ",
-  "Eco Souvenirs": "పర్యావరణ హిత జ్ఞాపికలు",
   "Story-led Workshops": "కథా ఆధారిత వర్క్‌షాప్స్"
 };
 
