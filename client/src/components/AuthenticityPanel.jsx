@@ -10,6 +10,7 @@ export default function AuthenticityPanel({ artisan }) {
   const [codeInput, setCodeInput] = useState(artisan?.authenticity?.code || "");
   const [result, setResult] = useState(null);
   const [isVerifying, setIsVerifying] = useState(false);
+  const [showManualVerify, setShowManualVerify] = useState(false);
 
   if (!artisan?.authenticity?.code) {
     return null;
@@ -95,22 +96,34 @@ export default function AuthenticityPanel({ artisan }) {
             </p>
           </div>
 
-          <div className="mt-5 flex flex-wrap items-center gap-3">
-            <input
-              value={codeInput}
-              onChange={(event) => setCodeInput(event.target.value)}
-              placeholder={text("Paste scanned QR code", "స్కాన్ చేసిన QR కోడ్‌ను పేస్ట్ చేయండి")}
-              className="w-full max-w-md rounded-2xl border border-indigo/10 bg-white px-4 py-3 text-sm outline-none"
-            />
-            <button
-              type="button"
-              onClick={handleVerify}
-              disabled={isVerifying || !codeInput.trim()}
-              className="rounded-full bg-indigo px-5 py-3 text-sm font-bold text-sand disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {isVerifying ? text("Verifying...", "ధృవీకరిస్తోంది...") : text("Verify Code", "కోడ్ ధృవీకరించండి")}
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowManualVerify((prev) => !prev)}
+            className="mt-5 rounded-full border border-indigo/20 bg-white px-4 py-2 text-xs font-semibold text-indigo"
+          >
+            {showManualVerify
+              ? text("Hide manual code verification", "మాన్యువల్ కోడ్ ధృవీకరణను దాచండి")
+              : text("Verify another code manually", "ఇంకొక కోడ్‌ను మాన్యువల్‌గా ధృవీకరించండి")}
+          </button>
+
+          {showManualVerify ? (
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <input
+                value={codeInput}
+                onChange={(event) => setCodeInput(event.target.value)}
+                placeholder={text("Paste scanned QR code", "స్కాన్ చేసిన QR కోడ్‌ను పేస్ట్ చేయండి")}
+                className="w-full max-w-md rounded-2xl border border-indigo/10 bg-white px-4 py-3 text-sm outline-none"
+              />
+              <button
+                type="button"
+                onClick={handleVerify}
+                disabled={isVerifying || !codeInput.trim()}
+                className="rounded-full bg-indigo px-5 py-3 text-sm font-bold text-sand disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isVerifying ? text("Verifying...", "ధృవీకరిస్తోంది...") : text("Verify Code", "కోడ్ ధృవీకరించండి")}
+              </button>
+            </div>
+          ) : null}
 
           {result ? (
             <p className={`mt-4 text-sm font-semibold ${isValidForThisArtisan ? "text-emerald-700" : "text-amber-700"}`}>
