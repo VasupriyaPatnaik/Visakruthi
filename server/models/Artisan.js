@@ -25,6 +25,11 @@ const artisanSchema = new mongoose.Schema(
     contact: {
       phone: String,
       email: String
+    },
+    authenticity: {
+      code: String,
+      origin: String,
+      issuedBy: String
     }
   },
   { timestamps: true }
