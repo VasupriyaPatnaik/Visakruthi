@@ -65,7 +65,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
-        <div className="mesh-border card-surface rounded-[2rem] p-8">
+        <div className="mesh-border card-surface rounded-4xl p-8">
           <p className="text-sm font-bold uppercase tracking-[0.22em] text-terracotta">{text("Volunteer", "వాలంటీర్")}</p>
           <h2 className="mt-4 font-display text-4xl font-bold text-indigo">
             {text("Join as a student cultural volunteer.", "విద్యార్థి సాంస్కృతిక వాలంటీర్‌గా చేరండి.")}
