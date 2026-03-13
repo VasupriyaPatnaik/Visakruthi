@@ -32,9 +32,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-indigo/20 bg-linear-to-r from-indigo to-[#0D4975] shadow-md shadow-indigo/20">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 lg:px-8">
         <Link to="/" className="flex items-center gap-3 rounded-full pr-3">
-          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-terracotta text-lg font-extrabold text-white shadow-md shadow-black/10">
-            V
-          </div>
+          <img src="/Logo.png" alt="Visakruthi logo" className="h-12 w-12 rounded-2xl shadow-md shadow-black/10" />
           <div>
             <p className="font-display text-[1.55rem] font-bold leading-none text-white">VISAKRUTHI</p>
             <p className="pt-1 text-[11px] uppercase tracking-[0.3em] text-gold">{text("Crafts of Vizag", "వైజాగ్ కళలు")}</p>
