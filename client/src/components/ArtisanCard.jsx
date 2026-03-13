@@ -3,10 +3,15 @@ import { useLanguage } from "./LanguageContext";
 
 export default function ArtisanCard({ artisan }) {
   const { text } = useLanguage();
+  const isJagannadha = artisan.id === "bamboo-jagannadha";
 
   return (
     <article className="mesh-border card-surface overflow-hidden rounded-[1.8rem]">
-      <img src={artisan.gallery?.[0]} alt={artisan.name} className="h-64 w-full object-cover" />
+      <img
+        src={artisan.gallery?.[0]}
+        alt={artisan.name}
+        className={`h-64 w-full ${isJagannadha ? "object-contain bg-sand" : "object-cover"}`}
+      />
       <div className="p-6">
         <p className="text-sm font-bold uppercase tracking-[0.24em] text-terracotta">{artisan.craftType}</p>
         <h3 className="mt-3 font-display text-3xl font-bold text-indigo">{artisan.name}</h3>
